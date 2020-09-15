@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown button with search/filter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="dropdown">
+        <button class="dropbtn">Dropdown</button>
+        <div class="dropdown-content" id="dropdown-content">
+            <input type="text" placeholder="Search..." class="search-field">
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Help</a>
+            <a href="#">Watch</a>
+            <a href="#">Price</a>
+            <a href="#">Home</a>
+            <a href="#">Icons</a>
+        </div>
+    </div>
+
+    <script>
+        // Declare variables
+        const dropdownContent = document.querySelector('#dropdown-content'),
+              button = document.querySelector('.dropbtn'),
+              input =  document.querySelector('.search-field'),
+              links = dropdownContent.querySelectorAll('a');
+
+        // On click hiding/showing dropdown content
+            button.addEventListener('click', (event) => {
+            event.preventDefault();
+            dropdownContent.classList.toggle('show');
+
+        });
+        // On keyup filtering words
+        input.addEventListener('keyup', () => {
+            // Declare variables
+            let inputVal = input.value.toUpperCase();
+            links.forEach(item => item.textContent.toUpperCase().indexOf(inputVal) > -1 ? item.style.display = '' : item.style.display = 'none');
+        });
+    </script>
+</body>
+</html>
